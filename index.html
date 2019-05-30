@@ -102,8 +102,8 @@
 
 
 
-
-
+<a target="_blank" class="github" target="_blank" href="https://jaschenn.github.com/" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:cchenzyy@icloud.com" title="Email">Email</a>
 
 								
 
@@ -119,6 +119,97 @@
 <div itemscope itemtype="http://schema.org/Blog">
 
 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2019-05-30T19:25:52+08:00" itemprop="datePublished">2019/5/30</time>
+			</div>
+			<div class="tags">posted in 
+			
+			    <a class='category' href='Java.html'>Java</a>&nbsp;
+			 
+			</div>
+		</div>
+		<h1 class="title" itemprop="name"><a href="15592155520270.html" itemprop="url">
+		Java中的流</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>今天做项目的时候遇到了流的问题，一直以来都是模糊两可，今天查了些资料，整理在这里。</p>
+
+<h2 id="toc_0">流的分类</h2>
+
+<p>流可以按照很多种角度进行分类：<br/>
+按照处理的数据单位可以分为字符流和字节流<br/>
+按照流的方向可以分为输入流和输出流<br/>
+按照功能可以分为节点流和处理流</p>
+
+<blockquote>
+<p>显而易见，字符流的处理单位就是字符，字节流处理的单位就是字节（byte）<br/>
+流是有方向的，一般而言，我们将流入程序的称之为输入流，流出的称之为输出流<br/>
+节点流就是直接操作文件/网络的流，比如说<code>FileInputStream</code>和<code>FileOutputStream</code>,他们都是从文件中读取或者是写入文件的流。（可以理解为节点流连接了程序和数据源）。而处理流则是对节点流（或者处理流，流可以进行多次处理）进行包装的流。通常来说，处理流是为了提供更强大的读写功能。比如说BufferedInputStream和BufferedOutputStream使用已经存在的节点流来构造，提供了带有缓冲的读写，提高了读写的效率（这两个就是使用Java写算法的时候的快读和快写）。DataInputStream和DataOutputStream使用已经存在的节点流来构建，提供了Java中的基本数据类型的读写功能，他们都称之为过滤流。</p>
+</blockquote>
+
+<p>以下是四种抽象数据流，Java的所有的流都继承于这四个：</p>
+
+<table>
+<thead>
+<tr>
+<th>字节</th>
+<th>字节流</th>
+<th>字符流</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>输入流</td>
+<td>InputStream</td>
+<td>Reader</td>
+</tr>
+<tr>
+<td>输出流</td>
+<td>OutputStream</td>
+<td>Writer</td>
+</tr>
+</tbody>
+</table>
+
+<p>1.继承自InputStream/OutputStream的流都是用于向程序中输入/输出数据，且数据的单位都是字节(byte=8bit)，如图，深色的为节点流，浅色的为处理流。</p>
+
+<p><img src="media/15592155520270/15592164761326.png" alt="" style="width:555px;"/></p>
+
+<p>2.继承自Reader/Writer的流都是用于向程序中输入/输出数据，且数据的单位都是字符(2byte=16bit)，如图，深色的为节点流，浅色的为处理流。<br/>
+<img src="media/15592155520270/15592164932786.png" alt="" style="width:513px;"/></p>
+
+<h2 id="toc_1">处理流类型常见的有：</h2>
+
+<p>缓冲流：缓冲流要“套接”在相应的节点流之上，对读写的数据提供了缓冲的功能，提高了读写效率，同事增加了一些新的方法。</p>
+
+<p>　　字节缓冲流有BufferedInputStream/BufferedOutputStream，字符缓冲流有BufferedReader/BufferedWriter，字符缓冲流分别提供了读取和写入一行的方法ReadLine和NewLine方法。</p>
+
+<p>　　对于输出地缓冲流，写出的数据，会先写入到内存中，再使用flush方法将内存中的数据刷到硬盘。所以，在使用字符缓冲流的时候，一定要先flush，然后再close，避免数据丢失。</p>
+
+<p>转换流：用于字节数据到字符数据之间的转换。</p>
+
+<p>　　仅有字符流InputStreamReader/OutputStreamWriter。其中，InputStreamReader需要与InputStream“套接”，OutputStreamWriter需要与OutputStream“套接”。</p>
+
+<p>数据流：提供了读写Java中的基本数据类型的功能。</p>
+
+<p>　　DataInputStream和DataOutputStream分别继承自InputStream和OutputStream，需要“套接”在InputStream和OutputStream类型的节点流之上。</p>
+
+<p>对象流：用于直接将对象写入写出。</p>
+
+<p>　　流类有ObjectInputStream和ObjectOutputStream，本身这两个方法没什么，但是其要写出的对象有要求，该对象必须实现Serializable接口，来声明其是可以序列化的。否则，不能用对象流读写。</p>
+
+<p>　　还有一个关键字比较重要，transient，由于修饰实现了Serializable接口的类内的属性，被该修饰符修饰的属性，在以对象流的方式输出的时候，该字段会被忽略。</p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
 	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
 		<div class="meta">
 			<div class="date">
@@ -169,27 +260,6 @@ macOS 10.14.5</p>
 <p>到此为止就已经完成啦。<br/>
 愉快的玩耍吧～</p>
 
-
-			
-			
-		</div>
-
-	</article>
- 
-	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-		<div class="meta">
-			<div class="date">
-				<time datetime="2019-05-30T14:58:22+08:00" itemprop="datePublished">2019/5/30</time>
-			</div>
-			
-			 
-			
-		</div>
-		<h1 class="title" itemprop="name"><a href="15591995029327.html" itemprop="url">
-		使用Mweb管理笔记和记录</a></h1>
-		<div class="entry-content" itemprop="articleBody">
-			
-			
 
 			
 			
