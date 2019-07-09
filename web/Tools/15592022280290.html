@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>  
 	  
-  	Archives - Jaschenn's Logs
+  	使用zsh + iTerm2 替代原有dash终端 - Jaschenn's Logs
   	
 	</title>
 
@@ -116,86 +116,56 @@
 		</div>	
 		<div class="mid-col">
 			<div class="mid-col-container"> <div id="content" class="inner">
-	<div itemscope itemtype="http://schema.org/Blog">
-		<section class="archives">
 
-		
-			 
-			  	<h1 style="top: auto;" class="year">2019</h1>
-			
-			
+	<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+		<h1 class="title" itemprop="name">使用zsh + iTerm2 替代原有dash终端</h1>
+		<div class="entry-content" itemprop="articleBody">
+			<p>iTerm2 作为mac上最好用的终端之一一直广受欢迎。<br/>
+现在介绍一下如何来安装使用。</p>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2019-06-10T17:18:23+08:00" itemprop="datePublished">6月 10</time></span>
-						<br>
-						 
-						<span class="tags">posted in 
-						
-						    <a class='category' href='How%20to%20use%20my%20Mac?.html'>How to use my Mac?</a>&nbsp;
-						 
-						</span>
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="15601583039234.html">
-					入门</a></h1>
-				</article>
-	 	
-			
-			
+<blockquote>
+<p>首先说明环境：<br/>
+macOS 10.14.5</p>
+</blockquote>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2019-05-31T08:15:13+08:00" itemprop="datePublished">5月 31</time></span>
-						<br>
-						 
-						
-						 
-						
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="15592617135957.html">
-					基于udp的一种物联网视频传输协议</a></h1>
-				</article>
-	 	
-			
-			
+<h2 id="toc_0">安装iTerm2</h2>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2019-05-30T19:25:52+08:00" itemprop="datePublished">5月 30</time></span>
-						<br>
-						 
-						<span class="tags">posted in 
-						
-						    <a class='category' href='Java.html'>Java</a>&nbsp;
-						 
-						</span>
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="15592155520270.html">
-					Java中的流</a></h1>
-				</article>
-	 	
-			
-			
+<p>这个很简单啦，直接去<a href="https://www.iterm2.com/">官网</a>下载安装就可以啦～</p>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2019-05-30T15:43:48+08:00" itemprop="datePublished">5月 30</time></span>
-						<br>
-						 
-						
-						 
-						
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="15592022280290.html">
-					使用zsh + iTerm2 替代原有dash终端</a></h1>
-				</article>
-	 	
+<h2 id="toc_1">切换为zsh</h2>
 
-	  </section>
+<ul>
+<li>检查目前使用的shell
+<code>echo $SHELL</code></li>
+</ul>
+
+<ul>
+<li><p>检查系统支持的shell<br/>
+<code>cat /etc/shell</code></p>
+<p>如果其中有zsh，那么剩下的就很容易了<br/>
+只需要使用<code>chsh -s /bin/zsh</code><br/>
+进行切换就可以了，同样的，使用<code>chsh -s /bin/bash</code>就可以切换为bash</p></li>
+</ul>
+
+<h2 id="toc_2">安装oh_my_zsh</h2>
+
+<p>mac本地自带了curl，所以我们可以很方便的使用如下的命令安装</p>
+
+<pre><code class="language-zsh">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
+</code></pre>
+
+<p>到此为止就已经完成啦。<br/>
+愉快的玩耍吧～</p>
+
+		</div>
+	</article>
+	<div class="share-comment">
+	 
+
+	  
+
+	  
+
 	</div>
 </div>        </div>
 			<footer id="footer" class="inner">Copyright &copy; 2014

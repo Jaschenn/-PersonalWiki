@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>  
 	  
-  	Jaschenn's Logs
+  	Java中的流 - Jaschenn's Logs
   	
 	</title>
 
@@ -116,102 +116,10 @@
 		</div>	
 		<div class="mid-col">
 			<div class="mid-col-container"> <div id="content" class="inner">
-<div itemscope itemtype="http://schema.org/Blog">
 
-
-	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-		<div class="meta">
-			<div class="date">
-				<time datetime="2019-06-10T17:18:23+08:00" itemprop="datePublished">2019/6/10</time>
-			</div>
-			<div class="tags">posted in 
-			
-			    <a class='category' href='How%20to%20use%20my%20Mac?.html'>How to use my Mac?</a>&nbsp;
-			 
-			</div>
-		</div>
-		<h1 class="title" itemprop="name"><a href="15601583039234.html" itemprop="url">
-		入门</a></h1>
+	<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+		<h1 class="title" itemprop="name">Java中的流</h1>
 		<div class="entry-content" itemprop="articleBody">
-			
-			<p>登录到系统之后打开Finder（访达），在左侧的栏目里固定着便捷访问的文件夹。你可以将需要快速访问的文件拖拽到这里。<br/>
-    Mac的很多环境的配置文件都在 ~/ 下。我们可以将这个目录添加到边栏，在我们寻找的时候就不需要使用<code>shift+command+G</code>输入文件路径去访问了。<em>记住这个小技巧</em><br/>
-    操作步骤如下：<br/>
-    1. 在finder中同时按下Shift+Command+G<br/>
-    2. 在弹出的窗口中输入“/User”<br/>
-    3. 这时候你可以看到一个小房子的图标，名称是你的用户名字<br/>
-    4. 拖拽他到左侧边栏即可完成</p>
-
-
-			
-			
-		</div>
-
-	</article>
- 
-	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-		<div class="meta">
-			<div class="date">
-				<time datetime="2019-05-31T08:15:13+08:00" itemprop="datePublished">2019/5/31</time>
-			</div>
-			
-			 
-			
-		</div>
-		<h1 class="title" itemprop="name"><a href="15592617135957.html" itemprop="url">
-		基于udp的一种物联网视频传输协议</a></h1>
-		<div class="entry-content" itemprop="articleBody">
-			
-			<h2 id="toc_0">V0.1</h2>
-
-<h3 id="toc_1">客户端</h3>
-
-<p>数据包内容</p>
-
-<table>
-<thead>
-<tr>
-<th>地址</th>
-<th>数据长度</th>
-<th>序列ID</th>
-<th>本次数据包的级别</th>
-<th>数据</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>独立</td>
-<td>long（8byte）</td>
-<td>long（8byte）</td>
-<td>int（4byte）</td>
-<td>数据长度</td>
-</tr>
-</tbody>
-</table>
-
-
-			
-			
-		</div>
-
-	</article>
- 
-	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-		<div class="meta">
-			<div class="date">
-				<time datetime="2019-05-30T19:25:52+08:00" itemprop="datePublished">2019/5/30</time>
-			</div>
-			<div class="tags">posted in 
-			
-			    <a class='category' href='Java.html'>Java</a>&nbsp;
-			 
-			</div>
-		</div>
-		<h1 class="title" itemprop="name"><a href="15592155520270.html" itemprop="url">
-		Java中的流</a></h1>
-		<div class="entry-content" itemprop="articleBody">
-			
 			<p>今天做项目的时候遇到了流的问题，一直以来都是模糊两可，今天查了些资料，整理在这里。</p>
 
 <h2 id="toc_0">流的分类</h2>
@@ -281,84 +189,17 @@
 
 <p>　　还有一个关键字比较重要，transient，由于修饰实现了Serializable接口的类内的属性，被该修饰符修饰的属性，在以对象流的方式输出的时候，该字段会被忽略。</p>
 
-
-			
-			
 		</div>
-
 	</article>
- 
-	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-		<div class="meta">
-			<div class="date">
-				<time datetime="2019-05-30T15:43:48+08:00" itemprop="datePublished">2019/5/30</time>
-			</div>
-			
-			 
-			
-		</div>
-		<h1 class="title" itemprop="name"><a href="15592022280290.html" itemprop="url">
-		使用zsh + iTerm2 替代原有dash终端</a></h1>
-		<div class="entry-content" itemprop="articleBody">
-			
-			<p>iTerm2 作为mac上最好用的终端之一一直广受欢迎。<br/>
-现在介绍一下如何来安装使用。</p>
-
-<blockquote>
-<p>首先说明环境：<br/>
-macOS 10.14.5</p>
-</blockquote>
-
-<h2 id="toc_0">安装iTerm2</h2>
-
-<p>这个很简单啦，直接去<a href="https://www.iterm2.com/">官网</a>下载安装就可以啦～</p>
-
-<h2 id="toc_1">切换为zsh</h2>
-
-<ul>
-<li>检查目前使用的shell
-<code>echo $SHELL</code></li>
-</ul>
-
-<ul>
-<li><p>检查系统支持的shell<br/>
-<code>cat /etc/shell</code></p>
-<p>如果其中有zsh，那么剩下的就很容易了<br/>
-只需要使用<code>chsh -s /bin/zsh</code><br/>
-进行切换就可以了，同样的，使用<code>chsh -s /bin/bash</code>就可以切换为bash</p></li>
-</ul>
-
-<h2 id="toc_2">安装oh_my_zsh</h2>
-
-<p>mac本地自带了curl，所以我们可以很方便的使用如下的命令安装</p>
-
-<pre><code class="language-zsh">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
-</code></pre>
-
-<p>到此为止就已经完成啦。<br/>
-愉快的玩耍吧～</p>
-
-
-			
-			
-		</div>
-
-	</article>
-  
-
-</div>
-<nav id="pagenavi">
+	<div class="share-comment">
 	 
-	
-	<div class="center"><a href="archives.html">Blog Archives</a></div>
 
-</nav>
+	  
 
-</div>
+	  
 
-
-
-        </div>
+	</div>
+</div>        </div>
 			<footer id="footer" class="inner">Copyright &copy; 2014
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; 
 Theme by <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a>
