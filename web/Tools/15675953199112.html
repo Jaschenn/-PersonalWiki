@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>  
 	  
-  	Archives - 
+  	疑难排查 - 
   	
 	</title>
 
@@ -118,88 +118,62 @@
 		</div>	
 		<div class="mid-col">
 			<div class="mid-col-container"> <div id="content" class="inner">
-	<div itemscope itemtype="http://schema.org/Blog">
-		<section class="archives">
 
-		
-			 
-			  	<h1 style="top: auto;" class="year">2019</h1>
-			
-			
+	<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+		<h1 class="title" itemprop="name">疑难排查</h1>
+		<div class="entry-content" itemprop="articleBody">
+			<h2 id="toc_0">访问127.0.0.1:9870出现permission denied</h2>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2019-09-04T19:08:39+08:00" itemprop="datePublished">9月 04</time></span>
-						<br>
-						 
-						<span class="tags">posted in 
-						
-						    <a class='category' href='%E5%A4%A7%E6%95%B0%E6%8D%AE.html'>大数据</a>&nbsp;
-						 
-						</span>
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="15675953199112.html">
-					疑难排查</a></h1>
-				</article>
-	 	
-			
-			
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g6npbwbcyfj30xu0emq3m.jpg" alt=""/><br/>
+这是由于权限问题导致的，可以通过在core-site.xml中通过配置相关信息解决：</p>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2019-09-04T19:08:26+08:00" itemprop="datePublished">9月 04</time></span>
-						<br>
-						 
-						<span class="tags">posted in 
-						
-						    <a class='category' href='%E5%A4%A7%E6%95%B0%E6%8D%AE.html'>大数据</a>&nbsp;
-						 
-						</span>
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="15675953067830.html">
-					Mac搭建Hive环境</a></h1>
-				</article>
-	 	
-			
-			
+<pre><code class="language-text">&lt;property&gt;
+        &lt;name&gt;hadoop.http.staticuser.user&lt;/name&gt;
+        &lt;value&gt;hadoop&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2019-09-04T15:04:18+08:00" itemprop="datePublished">9月 04</time></span>
-						<br>
-						 
-						<span class="tags">posted in 
-						
-						    <a class='category' href='%E5%A4%A7%E6%95%B0%E6%8D%AE.html'>大数据</a>&nbsp;
-						 
-						</span>
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="15675806580695.html">
-					Mac搭建Hadoop环境</a></h1>
-				</article>
-	 	
-			
-			
+<p>value值就是Hadoop中http访问静态用户名字。</p>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2019-07-09T14:52:36+08:00" itemprop="datePublished">7月 09</time></span>
-						<br>
-						 
-						
-						 
-						
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="15626551566186.html">
-					ARKit介绍</a></h1>
-				</article>
-	 	
+<p>除此之外，对于HDFS的权限配置在 hdfs-default.xml 中是默认开启的。</p>
 
-	  </section>
+<pre><code class="language-text">dfs.permissions.enabled=true #是否在HDFS中开启权限检查,默认为true
+</code></pre>
+
+<p>解决方法有两种，第一种是修改目录权限</p>
+
+<pre><code class="language-text">hdfs dfs -chmod -R 755 /
+</code></pre>
+
+<p>即可解决问题。<br/>
+第二种是直接配置 Hadoop 的权限配置：</p>
+
+<pre><code class="language-text">&lt;property&gt;
+        &lt;name&gt;dfs.permissions.enabled&lt;/name&gt;
+        &lt;value&gt;false&lt;/value&gt;
+    &lt;/property&gt;
+</code></pre>
+
+<p>更推荐使用第一种方式。</p>
+
+<h2 id="toc_1">IDEA中写MR连接HDFS出现权限问题</h2>
+
+<p>使用如下方法设置环境变量：</p>
+
+<pre><code class="language-text">System.setProperty(&quot;HADOOP_USER_NAME&quot;,&quot;jas&quot;); //设置环境变量，更换用户。解决权限问题。
+</code></pre>
+
+<p>根据你的实际情况更改环境变量的名字。</p>
+
+		</div>
+	</article>
+	<div class="share-comment">
+	 
+
+	  
+
+	  
+
 	</div>
 </div>        </div>
 			<footer id="footer" class="inner">Copyright &copy; 2014

@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>  
 	  
-  	Archives - 
+  	Mac搭建Hive环境 - 
   	
 	</title>
 
@@ -118,88 +118,123 @@
 		</div>	
 		<div class="mid-col">
 			<div class="mid-col-container"> <div id="content" class="inner">
-	<div itemscope itemtype="http://schema.org/Blog">
-		<section class="archives">
 
-		
-			 
-			  	<h1 style="top: auto;" class="year">2019</h1>
-			
-			
+	<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+		<h1 class="title" itemprop="name">Mac搭建Hive环境</h1>
+		<div class="entry-content" itemprop="articleBody">
+			<h2 id="toc_0">安装Hive</h2>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2019-09-04T19:08:39+08:00" itemprop="datePublished">9月 04</time></span>
-						<br>
-						 
-						<span class="tags">posted in 
-						
-						    <a class='category' href='%E5%A4%A7%E6%95%B0%E6%8D%AE.html'>大数据</a>&nbsp;
-						 
-						</span>
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="15675953199112.html">
-					疑难排查</a></h1>
-				</article>
-	 	
-			
-			
+<pre><code class="language-text">brew install hive
+</code></pre>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2019-09-04T19:08:26+08:00" itemprop="datePublished">9月 04</time></span>
-						<br>
-						 
-						<span class="tags">posted in 
-						
-						    <a class='category' href='%E5%A4%A7%E6%95%B0%E6%8D%AE.html'>大数据</a>&nbsp;
-						 
-						</span>
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="15675953067830.html">
-					Mac搭建Hive环境</a></h1>
-				</article>
-	 	
-			
-			
+<h2 id="toc_1">配置MySQL</h2>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2019-09-04T15:04:18+08:00" itemprop="datePublished">9月 04</time></span>
-						<br>
-						 
-						<span class="tags">posted in 
-						
-						    <a class='category' href='%E5%A4%A7%E6%95%B0%E6%8D%AE.html'>大数据</a>&nbsp;
-						 
-						</span>
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="15675806580695.html">
-					Mac搭建Hadoop环境</a></h1>
-				</article>
-	 	
-			
-			
+<p>创建hive用户并授予权限</p>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2019-07-09T14:52:36+08:00" itemprop="datePublished">7月 09</time></span>
-						<br>
-						 
-						
-						 
-						
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="15626551566186.html">
-					ARKit介绍</a></h1>
-				</article>
-	 	
+<pre><code class="language-sql">mysql -u root -p
 
-	  </section>
+mysql&gt;create database metastore;
+
+mysql&gt;grant all on *.* TO &#39;hive&#39;@&#39;%&#39; with grant option;
+
+mysql&gt;flush privileges;
+
+mysql&gt;exit;
+</code></pre>
+
+<p>然后授权，使权限生效。</p>
+
+<h2 id="toc_2">修改hive的配置文件</h2>
+
+<p>修改/usr/local/Cellar/hive/3.1.2/libexec/conf/hive-site.xml信息如下：</p>
+
+<pre><code class="language-markup">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;              
+&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;
+&lt;configuration&gt;
+&lt;property&gt;
+        &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt;
+        &lt;value&gt;root&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt;
+        &lt;value&gt;root&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;mysql
+        &lt;value&gt;jdbc:mysql://localhost:3306/metastore&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;mysql驱动&gt;程序
+        &lt;value&gt;com.mysql.jdbc.Driver&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>javax.jdo.option.ConnectionUserName -- 连接mysql的账号<br/>
+javax.jdo.option.ConnectionPassword -- 连接mysql的秘密<br/>
+javax.jdo.option.ConnectionURL -- 对应上一步创建的数据库</p>
+
+<h2 id="toc_3">在HDFS中创建hive所需要的仓库</h2>
+
+<pre><code class="language-text">hdfs fs -mkdir /tmp
+hdfs fs -mkdir -p /user/hive/warehouse
+hdfs fs -chmod g+w /tmp
+hdfs fs -chmod g+w /user/hive/warehouse
+</code></pre>
+
+<blockquote>
+<p>如果没有配置环境变量那么请到HADOOP_HOME中执行上述操作。</p>
+</blockquote>
+
+<p>这里创建的这些目录是hive默认保存数据的地址，还可以通过配置hive-site.xml修改保存的位置。</p>
+
+<pre><code class="language-markup">&lt;property&gt;
+    &lt;name&gt;
+        hive.metastore.warehouse.dir
+    &lt;/name&gt;
+    &lt;value&gt;
+        /user/hive/warehouse
+    &lt;/value&gt;
+    &lt;description&gt;
+        location of default database for the warehouse
+    &lt;/description&gt;
+&lt;/property&gt;
+</code></pre>
+
+<pre><code class="language-bash">配置同组用户有执行权限
+hdfs dfs -chmod g+w /user/hive/warehouse
+</code></pre>
+
+<h2 id="toc_4">初始化mysql中的数据库warehouse</h2>
+
+<pre><code class="language-text">schematool -dbType mysql -initSchema
+</code></pre>
+
+<h2 id="toc_5">启动hive的Metastore Server服务进程</h2>
+
+<pre><code class="language-text">hive --service metastore &amp;
+</code></pre>
+
+<h2 id="toc_6">登陆hive客户端</h2>
+
+<pre><code class="language-text">hive 
+</code></pre>
+
+<h2 id="toc_7">注意⚠️</h2>
+
+<p>初始化mysql中的数据库warehouse之前，需要先将和mysql版本匹配的mysql-connector 置于 <code>/usr/local/Cellar/hive/3.1.2/libexec/lib</code>中。</p>
+
+<p>all done✅</p>
+
+		</div>
+	</article>
+	<div class="share-comment">
+	 
+
+	  
+
+	  
+
 	</div>
 </div>        </div>
 			<footer id="footer" class="inner">Copyright &copy; 2014
