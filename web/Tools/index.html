@@ -124,6 +124,542 @@
 	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
 		<div class="meta">
 			<div class="date">
+				<time datetime="2020-03-07T14:31:33+08:00" itemprop="datePublished">2020/3/7</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15835626930026.html" itemprop="url">
+		swiftUI使用.sheet显示新窗口</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>Created By: jas chen<br/>
+Last Edited: Mar 04, 2020 1:30 PM</p>
+
+<p>SwiftUI’s sheets are used to present new view controllers modally over existing ones, like calling <strong><code>present()</code></strong> on a <strong><code>UIViewController</code></strong> in UIKit. To use one, give it something to show (some text, an image, a custom view, etc), add a Boolean that defines whether the detail view should be showing, then attach it to your main view as a modal sheet.</p>
+
+<p>For example, if you had a detail view like this one:</p>
+
+<pre><code class="language-text">struct DetailView: View {
+    var body: some View {
+        Text(&quot;Detail&quot;)
+    }
+}
+</code></pre>
+
+<p>Then you could present it like this:</p>
+
+<pre><code class="language-text">struct ContentView: View {
+    @State var showingDetail = false
+
+    var body: some View {
+        Button(action: {
+            self.showingDetail.toggle()
+        }) {
+            Text(&quot;Show Detail&quot;)
+        }.sheet(isPresented: $showingDetail) {
+            DetailView()
+        }
+    }
+}
+</code></pre>
+
+<p>Unlike navigation links, sheets don’t require a navigation view to work.</p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2020-03-07T14:31:33+08:00" itemprop="datePublished">2020/3/7</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15835626930072.html" itemprop="url">
+		swiftUI中的@State  @Environment 的用法</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>Created By: jas chen<br/>
+Last Edited: Feb 26, 2020 11:57 AM<br/>
+Tags: SwiftUI</p>
+
+<p><a href="https://www.cnblogs.com/xiaoniuzai/p/11417123.html">[译]理解 SwiftUI 里的属性装饰器@State, @Binding, @ObservedObject, @EnvironmentObject</a></p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2020-03-07T14:31:33+08:00" itemprop="datePublished">2020/3/7</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15835626930116.html" itemprop="url">
+		SwiftUI 中的动画</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>Created By: jas chen<br/>
+Last Edited: Mar 04, 2020 9:55 PM<br/>
+Tags: SwiftUI</p>
+
+<h2 id="toc_0">隐式动画</h2>
+
+<p>使用修饰符.animation(.default)即可</p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2020-03-07T14:31:33+08:00" itemprop="datePublished">2020/3/7</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15835626930157.html" itemprop="url">
+		解决</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>Created By: jas chen<br/>
+Last Edited: Mar 04, 2020 1:32 PM<br/>
+Tags: Core Data</p>
+
+<p><a href="https://stackoverflow.com/questions/58328201/saving-core-data-entity-in-popover-in-swiftui-throws-nilerror-without-passing-e">Saving core data entity in popover in SwiftUI throws nilError without passing .environment to SubView again</a></p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2020-03-07T14:31:32+08:00" itemprop="datePublished">2020/3/7</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15835626929663.html" itemprop="url">
+		GitPush出现Writing object 卡住</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>Created By: jas chen<br/>
+Last Edited: Feb 14, 2020 7:53 PM</p>
+
+<h1 id="toc_0">原因</h1>
+
+<p>这是由于 Git 的缓冲区导致的，由于缓冲区过小，无法完全容纳本次做的更新操作。故一直卡在某个位置无法继续执行任务。</p>
+
+<h1 id="toc_1">解决方法</h1>
+
+<p>修改缓冲区大小</p>
+
+<pre><code class="language-text">git config --global http.postBuffer 52428800
+</code></pre>
+
+<p>500MB : 52428800</p>
+
+<p>1GB : 1048576000</p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2020-03-07T14:31:32+08:00" itemprop="datePublished">2020/3/7</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15835626929707.html" itemprop="url">
+		Resource</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>Created By: jas chen<br/>
+Last Edited: Feb 19, 2020 9:17 PM</p>
+
+<p><a href="https://www.andrewcbancroft.com/blog/ios-development/data-persistence/using-core-data-with-swiftui-introduction/">Using Core Data With SwiftUI - An Introduction</a></p>
+
+<p><a href="https://www.hackingwithswift.com/quick-start/swiftui/how-to-configure-core-data-to-work-with-swiftui">How to configure Core Data to work with SwiftUI</a></p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2020-03-07T14:31:32+08:00" itemprop="datePublished">2020/3/7</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15835626929752.html" itemprop="url">
+		swift项目引入第三方包之后出现错误</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>Created By: jas chen<br/>
+Last Edited: Feb 14, 2020 7:50 PM</p>
+
+<p>错误提示信息如下：</p>
+
+<pre><code class="language-text">Could not load NIB in bundle: &#39;NSBundle ... with name &#39;TimelineTableViewCell&#39;
+</code></pre>
+
+<p><figure><img src="swift%201/2020-01-089.59.33.png" alt="swift%201/2020-01-089.59.33.png"/><figcaption>swift%201/2020-01-089.59.33.png</figcaption></figure></p>
+
+<h1 id="toc_0">解决方法</h1>
+
+<p>手动到 build parse 中添加依赖就可以解决问题</p>
+
+<p><figure><img src="swift%201/2020-01-0810.19.01.png" alt="swift%201/2020-01-0810.19.01.png"/><figcaption>swift%201/2020-01-0810.19.01.png</figcaption></figure></p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2020-03-07T14:31:32+08:00" itemprop="datePublished">2020/3/7</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15835626929798.html" itemprop="url">
+		swift基础</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>Created By: jas chen<br/>
+Last Edited: Mar 04, 2020 1:30 PM<br/>
+Tags: swift</p>
+
+<h2 id="toc_0">输出</h2>
+
+<p>默认情况下，terminator的值为&quot;\n&quot;, 因此可以不用输入terminator参数。</p>
+
+<pre><code class="language-text">print(&quot;Hello World&quot;, terminator: &quot; this is the end of the str&quot;)
+//输出结果：Hello World this is the end of the str
+</code></pre>
+
+<h2 id="toc_1">整数</h2>
+
+<h3 id="toc_2">范围</h3>
+
+<p>可以通过访问不同类型的min和max来获取对应类型的最小值的最大值。</p>
+
+<pre><code class="language-text">let min8Value = UInt8.min
+//0
+let max8Value = UInt8.max
+//255
+let min16Value = UInt16.min
+//0
+//类似可以获得 UInt16、UInt32的最大值、最小值
+</code></pre>
+
+<h3 id="toc_3">Int</h3>
+
+<p>swift 提供了一个特殊的整数类型Int，长度和当前平台原生字节长相同。</p>
+
+<ul>
+<li>在32位平台上，Int和Int32长度相同</li>
+<li>在64位平台上，Int和Int64长度相同</li>
+</ul>
+
+<p>在32位平台上，Int可以存储的范围可以达到 -2147483648～2147483647</p>
+
+<h3 id="toc_4">UInt</h3>
+
+<p>是 swift 提供的一个无符号的UInt，长度与当前平台的原生字节长度相同</p>
+
+<h2 id="toc_5">浮点数</h2>
+
+<p>Double 表示64位浮点数。</p>
+
+<p>Float 表示32位浮点数。</p>
+
+<blockquote>
+<p>Double的精度很高，至少有15数字，而Float只有6位数字。</p>
+</blockquote>
+
+<h2 id="toc_6">类型别名</h2>
+
+<pre><code class="language-text">typealias AudioSample = UInt16
+var max = AudioSample.min
+</code></pre>
+
+<h2 id="toc_7">元组</h2>
+
+<p>元组内的值可以为任意类型，并不要求是相同类型。</p>
+
+<pre><code class="language-text">var HttpError = (404,&quot;Not Found&quot;)
+
+print(HttpError.0)
+//可以通过.来访问元组中的内容
+
+var HttpError2 = (Code: &quot;200&quot;,description: &quot;ok&quot;)
+
+print(HttpError2.description)
+//命名之后可以通过名称来访问内容
+
+let (justTheCode,_) = HttpError2
+//可以通过_来表示不需要的元素
+</code></pre>
+
+<h2 id="toc_8">可选类型</h2>
+
+<h2 id="toc_9">循环</h2>
+
+<pre><code class="language-text">//闭区间
+for index in 1...3{
+    print(index)
+}
+//开区间
+for index in 1..&lt;5{
+    print(index)
+}
+//循环的降序
+for index in (1..&lt;5).reversed() {
+    print(index)
+}
+</code></pre>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2020-03-07T14:31:32+08:00" itemprop="datePublished">2020/3/7</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15835626929845.html" itemprop="url">
+		SwiftUI官方教程（一）</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>Created By: jas chen<br/>
+Last Edited: Feb 09, 2020 9:17 PM</p>
+
+<blockquote>
+<p>版本要求：macOS Catalina 10.15 、Xcode 11</p>
+</blockquote>
+
+<h2 id="toc_0">创建项目</h2>
+
+<p>打开 Xcode，创建新的 Xcode 项目，选择 iOS 平台，选择 Single View App，然后点击下一步。</p>
+
+<p><figure><img src="SwiftUI%201/Untitled.png" alt="SwiftUI%201/Untitled.png"/><figcaption>SwiftUI%201/Untitled.png</figcaption></figure></p>
+
+<p>输入项目名称 LandMarks，选择使用 SwiftUI 构建用户界面，点击下一步，选择将项目保存到哪里。</p>
+
+<p><figure><img src="SwiftUI%201/Untitled%201.png" alt="SwiftUI%201/Untitled%201.png"/><figcaption>SwiftUI%201/Untitled%201.png</figcaption></figure></p>
+
+<p>在项目的导航栏里，选择 ContentView.swift </p>
+
+<blockquote>
+<p>swiftUI 默认会声明两个结构( Structure ) , 第一个结构遵循了 View 协议，用来描述本视图的内容和样式。第二个结构声明了本视图的预览（即 Xcode 右边的 Canvas 中显示的内容）。</p>
+</blockquote>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2020-03-07T14:31:32+08:00" itemprop="datePublished">2020/3/7</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15835626929889.html" itemprop="url">
+		使用swiftUI和CorData完成一个Demo</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>Created By: jas chen<br/>
+Last Edited: Feb 18, 2020 6:13 PM</p>
+
+<p><a href="https://medium.com/@maeganwilson_">Maegan Wilson - Medium</a></p>
+
+<p><a href="https://stackoverflow.com/questions/57532976/allowing-swiftui-to-import-all-contacts-and-delete-specific-ones">Allowing SwiftUI to import all Contacts and delete specific ones</a></p>
+
+<p>导入通讯录</p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2020-03-07T14:31:32+08:00" itemprop="datePublished">2020/3/7</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15835626929932.html" itemprop="url">
+		swiftUI使用CoreData caves crash的解决方法</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>Created By: jas chen<br/>
+Last Edited: Feb 18, 2020 11:29 AM</p>
+
+<h1 id="toc_0">if DEBUG</h1>
+
+<pre><code class="language-text">struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        return ContentView().environment(\.managedObjectContext, context)
+    }
+}
+#endif
+</code></pre>
+
+<p>完整的代码如下：</p>
+
+<pre><code class="language-text">//
+//  ContentView.swift
+//  SwiftUIwithCoreData
+//
+//  Created by jas chen on 2020/2/17.
+//  Copyright © 2020 jas chen. All rights reserved.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @FetchRequest(entity: Student.entity(), sortDescriptors: []) var students: FetchedResults&lt;Student&gt;
+    @Environment(\.managedObjectContext) var moc
+    let firstNames = [&quot;Ginny&quot;, &quot;Harry&quot;, &quot;Hermione&quot;, &quot;Luna&quot;, &quot;Ron&quot;]
+    let lastNames = [&quot;Granger&quot;, &quot;Lovegood&quot;, &quot;Potter&quot;, &quot;Weasley&quot;]
+    var body: some View {
+        VStack{
+            List{
+                ForEach(students, id: \.id){ student in
+                    Text(student.name ?? &quot;Unknow&quot;)
+                }
+            }
+            Button(action: {
+                let chosenFirstName = self.firstNames.randomElement()!
+                let chosenLastName = self.lastNames.randomElement()!
+                let student = Student(context: self.moc)
+                student.id = UUID()
+                student.name = &quot;\(chosenFirstName) \(chosenLastName)&quot;
+                try? self.moc.save()
+
+            }) {
+                Text(&quot;Add&quot;)
+            }
+
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        return ContentView().environment(\.managedObjectContext, context)
+    }
+}
+</code></pre>
+
+<p><a href="https://www.hackingwithswift.com/books/ios-swiftui/how-to-combine-core-data-and-swiftui">How to combine Core Data and SwiftUI</a></p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2020-03-07T14:31:32+08:00" itemprop="datePublished">2020/3/7</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="15835626929975.html" itemprop="url">
+		swiftUI消除List的分割线</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<p>Created By: jas chen<br/>
+Last Edited: Mar 04, 2020 1:57 PM<br/>
+Tags: SwiftUI</p>
+
+<p>.onAppear {//消除List的分割线<br/>
+                                UITableView.appearance().separatorStyle = .none<br/>
+                            }.onDisappear {<br/>
+                                UITableView.appearance().separatorStyle = .singleLine<br/>
+                            }</p>
+
+<p>使用如上修饰符即可完成对该List的修改</p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
 				<time datetime="2019-09-04T19:08:39+08:00" itemprop="datePublished">2019/9/4</time>
 			</div>
 			<div class="tags">posted in 
@@ -519,7 +1055,7 @@ Theme by <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank 
   
     
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_SVG-full"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
 </body>
 </html>

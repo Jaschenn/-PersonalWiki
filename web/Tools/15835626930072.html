@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>  
 	  
-  	Mac搭建Hadoop环境 - 
+  	swiftUI中的@State  @Environment 的用法 - 
   	
 	</title>
 
@@ -120,118 +120,13 @@
 			<div class="mid-col-container"> <div id="content" class="inner">
 
 	<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-		<h1 class="title" itemprop="name">Mac搭建Hadoop环境</h1>
+		<h1 class="title" itemprop="name">swiftUI中的@State  @Environment 的用法</h1>
 		<div class="entry-content" itemprop="articleBody">
-			<p>Mac下可以使用<code>brew</code>安装Hadoop，有关HomeBrew的安装配置请参考Tools/。</p>
+			<p>Created By: jas chen<br/>
+Last Edited: Feb 26, 2020 11:57 AM<br/>
+Tags: SwiftUI</p>
 
-<h2 id="toc_0">下载安装Hadoop</h2>
-
-<pre><code class="language-text">brew install hadoop
-</code></pre>
-
-<p>稍等片刻即可完成Hadoop的安装。<br/>
-有关hadoop的文件目录可以使用<code>brew list hadoop</code><br/>
-<figure><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g6ni9gldabj312k0u0goq.jpg" alt="文件都在/usr/local/Cellar中"/><figcaption>文件都在/usr/local/Cellar中</figcaption></figure></p>
-
-<h2 id="toc_1">配置 SSH</h2>
-
-<p>安装 Hadoop 需要远程登陆的功能，如果不想一直输入密码可以通过配置 SSH 秘钥。</p>
-
-<ol>
-<li>在系统偏好设置中打开远程登录，位置在 System Preferences -&gt; Sharing中。</li>
-<li>方法二：</li>
-</ol>
-
-<pre><code class="language-text">sh-keygen -t rsa -P &#39;&#39; -f ~/.ssh/id_rsa # 生成公钥和私钥
-cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys # 将公钥追
-加到文件
-chmod 0600 ~/.ssh/authorized_keys # 修改相关权限
-</code></pre>
-
-<blockquote>
-<p>可以使用<code>ssh localhost</code>方式进行测试。</p>
-</blockquote>
-
-<h2 id="toc_2">配置文件的修改</h2>
-
-<h3 id="toc_3">配置环境变量</h3>
-
-<p>修改/usr/local/Cellar/hadoop/3.1.2/libexec/etc/hadoop/hadoop-env.sh：<br/>
-添加</p>
-
-<pre><code class="language-text">export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_212.jdk/Contents/Home
-</code></pre>
-
-<p>JAVA_HOME根据自己的实际情况进行修改。</p>
-
-<h3 id="toc_4">core-site.xml</h3>
-
-<p>Hadoop的核心配置文件，里面记录了HDFS和MapReduce都需要使用的配置<br/>
-如：NameNode的信息。</p>
-
-<p>配置内容：</p>
-
-<pre><code class="language-markup">&lt;configuration&gt;
-&lt;property&gt;
-&lt;!--临时文件 --&gt;
-        &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
-        &lt;value&gt;/usr/local/Cellar/hadoop/hdfs/tmp&lt;/value&gt;
-        &lt;description&gt;A base for other temporary directories.&lt;/description&gt;
-    &lt;/property&gt;
-    &lt;property&gt;
-    &lt;!--namenode 的位置，由于是HDFS和MR都需要使用，因此在core中，而不是在hdfs-site.xml 里--&gt;
-        &lt;name&gt;fs.default.name&lt;/name&gt;
-        &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
-    &lt;/property&gt;
-&lt;/configuration&gt;
-
-</code></pre>
-
-<h3 id="toc_5">hdfs-site.xml</h3>
-
-<p>这里配置了hdfs的信息，修改其为如下：</p>
-
-<pre><code class="language-markup">&lt;configuration&gt;
-&lt;!--每个block重复的次数--&gt;
-    &lt;property&gt;
-        &lt;name&gt;dfs.replication&lt;/name&gt;
-        &lt;value&gt;1&lt;/value&gt;
-    &lt;/property&gt;
-&lt;/configuration&gt;
-</code></pre>
-
-<p>由于我使用的是伪分布，因此设置重复次数为1.</p>
-
-<h3 id="toc_6">maperd-site.xml</h3>
-
-<p>这是MapReduce的配置信息。修改其为如下：</p>
-
-<pre><code class="language-markup">
-&lt;configuration&gt;
-&lt;property&gt;
-&lt;!--这是JobTracker的地址，因为只有MR使用，所以他出现在mapred-site.xml中 --&gt;
-        &lt;name&gt;mapred.job.tracker&lt;/name&gt;
-        &lt;value&gt;localhost:9010&lt;/value&gt;
-    &lt;/property&gt;
-&lt;/configuration&gt;
-</code></pre>
-
-<h2 id="toc_7">结束语</h2>
-
-<p>至此Hadoop的安装配置过程就全部完成了。</p>
-
-<h2 id="toc_8">附加信息</h2>
-
-<p>启动Hadoop 之前需要先格式化NameNode，方法如下</p>
-
-<ol>
-<li>进入/usr/local/Cellar/hadoop/3.1.2/bin 中</li>
-<li><p>执行 <code>hadoop namenode -format</code></p></li>
-<li><p>启动Hadoop：</p>
-<pre><code class="language-text">./start-all.sh
-</code></pre></li>
-<li><p>使用jps可以查看各节点启动情况。</p></li>
-</ol>
+<p><a href="https://www.cnblogs.com/xiaoniuzai/p/11417123.html">[译]理解 SwiftUI 里的属性装饰器@State, @Binding, @ObservedObject, @EnvironmentObject</a></p>
 
 		</div>
 	</article>
